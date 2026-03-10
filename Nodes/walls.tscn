@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://c32r4jeksnt3c"]
+
+[ext_resource type="Texture2D" uid="uid://bvjh86r4csvub" path="res://Sprites/Tiles.png" id="1_o6vvr"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_frq8g"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_o6vvr"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, -7, -8, -7)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_l2ejr"]
+polygon = PackedVector2Array(-8, -8, -7, -8, -7, -7, -8, -7)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fj0e4"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a4kgl"]
+texture = ExtResource("1_o6vvr")
+0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_frq8g")
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+1:1/0 = 0
+1:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_o6vvr")
+2:1/0 = 0
+2:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_l2ejr")
+3:1/0 = 0
+3:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_fj0e4")
+
+[sub_resource type="TileSet" id="TileSet_dcvf6"]
+occlusion_layer_0/light_mask = 1
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_a4kgl")
+
+[node name="Walls" type="TileMapLayer"]
+z_index = 4
+tile_set = SubResource("TileSet_dcvf6")

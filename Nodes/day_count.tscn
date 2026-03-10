@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsjgugkvxyjyh"]
+
+[ext_resource type="Texture2D" uid="uid://c07xcbbmmxxut" path="res://Sprites/BlackScreen.png" id="1_3tuvw"]
+[ext_resource type="Script" uid="uid://dylndvg2b4epc" path="res://Nodes/day_count.gd" id="1_075xk"]
+[ext_resource type="FontFile" uid="uid://dlcacgn52sxhr" path="res://MedodicaRegular.otf" id="2_f7yd2"]
+[ext_resource type="PackedScene" uid="uid://b854138tscj0t" path="res://Nodes/sounds.tscn" id="4_hiyge"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hiyge"]
+font = ExtResource("2_f7yd2")
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_075xk"]
+font = ExtResource("2_f7yd2")
+
+[node name="DayCount" type="Node2D"]
+script = ExtResource("1_075xk")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="BlackScreen" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(1.5, 1)
+texture = ExtResource("1_3tuvw")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -120.0
+offset_top = -80.0
+offset_right = 120.0
+offset_bottom = 80.0
+label_settings = SubResource("LabelSettings_hiyge")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -88.0
+offset_top = -48.0
+offset_right = 88.0
+offset_bottom = 48.0
+label_settings = SubResource("LabelSettings_075xk")
+autowrap_mode = 2
+visible_characters = 0
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Sounds" parent="." instance=ExtResource("4_hiyge")]

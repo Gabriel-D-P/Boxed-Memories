@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2wvmbqrmowyp"]
+
+[ext_resource type="Script" uid="uid://bukf510416rq1" path="res://Nodes/musics.gd" id="1_tpbnp"]
+[ext_resource type="AudioStream" uid="uid://b5elku5jnjgew" path="res://Musics/DailyTasks.mp3" id="2_r0qyy"]
+[ext_resource type="AudioStream" uid="uid://cdcy0s2lntejv" path="res://Musics/DailyLife.mp3" id="3_cb8sa"]
+[ext_resource type="AudioStream" uid="uid://wmn02twi6qvl" path="res://Musics/Day.mp3" id="4_o8o6g"]
+
+[node name="Musics" type="Node2D"]
+script = ExtResource("1_tpbnp")
+
+[node name="DailyTasks" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_r0qyy")
+
+[node name="DailyLife" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_cb8sa")
+
+[node name="Day" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_o8o6g")

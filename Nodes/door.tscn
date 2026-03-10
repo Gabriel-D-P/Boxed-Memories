@@ -1,0 +1,103 @@
+[gd_scene load_steps=13 format=3 uid="uid://quixj3xwwpy2"]
+
+[ext_resource type="Texture2D" uid="uid://bvjh86r4csvub" path="res://Sprites/Tiles.png" id="1_bspd1"]
+[ext_resource type="Script" uid="uid://co6lgl3aq2jxh" path="res://Nodes/door.gd" id="1_n63xe"]
+[ext_resource type="Texture2D" uid="uid://b2mn8vtufju01" path="res://Sprites/Box.png" id="2_1l5s0"]
+[ext_resource type="PackedScene" uid="uid://b854138tscj0t" path="res://Nodes/sounds.tscn" id="4_qig6e"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_n63xe"]
+points = PackedVector2Array(16, 0, 7, -18, -7, -18, -16, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qig6e"]
+size = Vector2(30, 3)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_n63xe"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, -5, -8, -5)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n63xe"]
+texture = ExtResource("1_bspd1")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+0:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_n63xe")
+
+[sub_resource type="TileSet" id="TileSet_qig6e"]
+occlusion_layer_0/light_mask = 1
+sources/0 = SubResource("TileSetAtlasSource_n63xe")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n63xe"]
+atlas = ExtResource("2_1l5s0")
+region = Rect2(0, 16, 1, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1l5s0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n63xe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n63xe"]
+size = Vector2(32, 8)
+
+[node name="Door" type="Node2D"]
+modulate = Color(0.7, 0.7, 0.7, 1)
+script = ExtResource("1_n63xe")
+
+[node name="OpenUp" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="OpenUp"]
+rotation = 3.14159
+shape = SubResource("ConvexPolygonShape2D_n63xe")
+
+[node name="OpenDown" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpenDown"]
+shape = SubResource("ConvexPolygonShape2D_n63xe")
+
+[node name="DoorHinge" type="Node2D" parent="."]
+position = Vector2(14.5, 0)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="DoorHinge"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorHinge/StaticBody2D"]
+position = Vector2(-15.5, 0)
+shape = SubResource("RectangleShape2D_qig6e")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="DoorHinge"]
+position = Vector2(1.5, -1.5)
+tile_map_data = PackedByteArray(0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0)
+tile_set = SubResource("TileSet_qig6e")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="DoorHinge"]
+position = Vector2(1.5, -1.5)
+tile_map_data = PackedByteArray(0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0)
+tile_set = SubResource("TileSet_qig6e")
+
+[node name="Hinge" type="AnimatedSprite2D" parent="DoorHinge"]
+modulate = Color(0.588235, 0.588235, 0.588235, 1)
+position = Vector2(9.53674e-07, 0)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_1l5s0")
+
+[node name="Open" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Open"]
+shape = SubResource("RectangleShape2D_n63xe")
+
+[node name="Sounds" parent="." instance=ExtResource("4_qig6e")]
+
+[node name="SoundTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="OpenUp" to="." method="_on_open_up_body_entered"]
+[connection signal="body_exited" from="OpenUp" to="." method="_on_open_down_body_exited"]
+[connection signal="body_entered" from="OpenDown" to="." method="_on_open_down_body_entered"]
+[connection signal="body_exited" from="OpenDown" to="." method="_on_open_down_body_exited"]
+[connection signal="body_entered" from="Open" to="." method="_on_open_body_entered"]
+[connection signal="body_exited" from="Open" to="." method="_on_open_body_exited"]

@@ -1,0 +1,87 @@
+[gd_scene load_steps=11 format=3 uid="uid://jdio1o0mdvp7"]
+
+[ext_resource type="Texture2D" uid="uid://b2mn8vtufju01" path="res://Sprites/Box.png" id="1_fday1"]
+[ext_resource type="Script" uid="uid://bxbnuvnypuyg1" path="res://Nodes/item_get.gd" id="1_s0657"]
+[ext_resource type="PackedScene" uid="uid://b854138tscj0t" path="res://Nodes/sounds.tscn" id="3_2387a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0657"]
+atlas = ExtResource("1_fday1")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2387a"]
+atlas = ExtResource("1_fday1")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iu4uk"]
+atlas = ExtResource("1_fday1")
+region = Rect2(0, 96, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ho465"]
+atlas = ExtResource("1_fday1")
+region = Rect2(0, 80, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2387a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0657")
+}],
+"loop": false,
+"name": &"TrashBag",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2387a")
+}],
+"loop": false,
+"name": &"TrashBagFull",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iu4uk")
+}],
+"loop": true,
+"name": &"Water",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ho465")
+}],
+"loop": true,
+"name": &"WaterEmpty",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s0657"]
+radius = 11.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s0657"]
+size = Vector2(12, 8)
+
+[node name="ItemGet" type="Node2D"]
+script = ExtResource("1_s0657")
+
+[node name="Sprites" type="AnimatedSprite2D" parent="."]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_2387a")
+animation = &"TrashBag"
+autoplay = "TrashBag"
+
+[node name="Interact" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interact"]
+shape = SubResource("CircleShape2D_s0657")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_s0657")
+
+[node name="Sounds" parent="." instance=ExtResource("3_2387a")]
+
+[connection signal="body_entered" from="Interact" to="." method="_on_interact_body_entered"]
+[connection signal="body_exited" from="Interact" to="." method="_on_interact_body_exited"]

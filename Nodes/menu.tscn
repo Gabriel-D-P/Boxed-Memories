@@ -1,0 +1,423 @@
+[gd_scene load_steps=11 format=3 uid="uid://1hc645nfusjf"]
+
+[ext_resource type="Script" uid="uid://c3wgnpujg4dnl" path="res://Nodes/menu.gd" id="1_y1ial"]
+[ext_resource type="Texture2D" uid="uid://bdyxkgk7ba7ea" path="res://Sprites/MenuBG.png" id="2_7ku0t"]
+[ext_resource type="FontFile" uid="uid://dlcacgn52sxhr" path="res://MedodicaRegular.otf" id="3_0owfn"]
+[ext_resource type="PackedScene" uid="uid://blnotpjo5jtor" path="res://Nodes/camera.tscn" id="4_ogfmt"]
+[ext_resource type="Texture2D" uid="uid://c07xcbbmmxxut" path="res://Sprites/BlackScreen.png" id="5_lr60n"]
+
+[sub_resource type="Gradient" id="Gradient_2ni62"]
+offsets = PackedFloat32Array(0, 0.668831)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7ku0t"]
+gradient = SubResource("Gradient_2ni62")
+width = 96
+height = 96
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ogfmt"]
+font = ExtResource("3_0owfn")
+outline_size = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_0owfn"]
+font = ExtResource("3_0owfn")
+font_color = Color(0.7, 0.7, 0.7, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lr60n"]
+line_spacing = -3.0
+font = ExtResource("3_0owfn")
+
+[node name="Menu" type="Node2D"]
+position = Vector2(120, 80)
+script = ExtResource("1_y1ial")
+
+[node name="BlackScreen" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+z_index = -10
+scale = Vector2(6, 4)
+texture = ExtResource("5_lr60n")
+
+[node name="MenuBg" type="Sprite2D" parent="."]
+texture = ExtResource("2_7ku0t")
+
+[node name="RegularLight" type="PointLight2D" parent="."]
+position = Vector2(88, -56)
+energy = 0.75
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_item_cull_mask = 3
+texture = SubResource("GradientTexture2D_7ku0t")
+texture_scale = 4.5
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BlackScreen" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+modulate = Color(0, 0, 0, 1)
+z_index = -10
+position = Vector2(120, 80)
+scale = Vector2(36, 16)
+texture = ExtResource("5_lr60n")
+
+[node name="Main" type="Node2D" parent="CanvasLayer"]
+
+[node name="Title" type="Label" parent="CanvasLayer/Main"]
+light_mask = 0
+offset_left = 8.0
+offset_top = 48.0
+offset_right = 154.0
+offset_bottom = 64.0
+text = ".TItle"
+label_settings = SubResource("LabelSettings_ogfmt")
+
+[node name="TStart" type="Label" parent="CanvasLayer/Main"]
+light_mask = 0
+offset_left = 16.0
+offset_top = 72.0
+offset_right = 66.0
+offset_bottom = 88.0
+scale = Vector2(0.75, 0.75)
+text = ".Start"
+label_settings = SubResource("LabelSettings_0owfn")
+
+[node name="Start" type="Button" parent="CanvasLayer/Main"]
+offset_left = 16.0
+offset_top = 72.0
+offset_right = 88.0
+offset_bottom = 88.0
+focus_mode = 0
+flat = true
+
+[node name="TSettings" type="Label" parent="CanvasLayer/Main"]
+light_mask = 0
+offset_left = 16.0
+offset_top = 88.0
+offset_right = 104.0
+offset_bottom = 104.0
+scale = Vector2(0.75, 0.75)
+text = ".Settings"
+label_settings = SubResource("LabelSettings_0owfn")
+
+[node name="Settings" type="Button" parent="CanvasLayer/Main"]
+offset_left = 16.0
+offset_top = 88.0
+offset_right = 88.0
+offset_bottom = 104.0
+focus_mode = 0
+flat = true
+
+[node name="TCredits" type="Label" parent="CanvasLayer/Main"]
+light_mask = 0
+offset_left = 16.0
+offset_top = 104.0
+offset_right = 104.0
+offset_bottom = 120.0
+scale = Vector2(0.75, 0.75)
+text = ".Credits"
+label_settings = SubResource("LabelSettings_0owfn")
+
+[node name="Credits" type="Button" parent="CanvasLayer/Main"]
+offset_left = 16.0
+offset_top = 104.0
+offset_right = 88.0
+offset_bottom = 120.0
+focus_mode = 0
+flat = true
+
+[node name="TExit" type="Label" parent="CanvasLayer/Main"]
+light_mask = 0
+offset_left = 16.0
+offset_top = 120.0
+offset_right = 104.0
+offset_bottom = 136.0
+scale = Vector2(0.75, 0.75)
+text = ".Exit"
+label_settings = SubResource("LabelSettings_0owfn")
+
+[node name="Exit" type="Button" parent="CanvasLayer/Main"]
+offset_left = 16.0
+offset_top = 120.0
+offset_right = 88.0
+offset_bottom = 136.0
+focus_mode = 0
+flat = true
+
+[node name="Credits" type="Node2D" parent="CanvasLayer"]
+visible = false
+
+[node name="Title" type="Label" parent="CanvasLayer/Credits"]
+light_mask = 0
+offset_left = 48.0
+offset_top = 8.0
+offset_right = 194.0
+offset_bottom = 24.0
+text = ".TItle"
+label_settings = SubResource("LabelSettings_ogfmt")
+horizontal_alignment = 1
+
+[node name="TBack" type="Label" parent="CanvasLayer/Credits"]
+light_mask = 0
+offset_left = 12.0
+offset_top = 136.0
+offset_right = 50.0
+offset_bottom = 152.0
+scale = Vector2(0.75, 0.75)
+text = ".Back"
+label_settings = SubResource("LabelSettings_0owfn")
+
+[node name="TCredits" type="Label" parent="CanvasLayer/Credits"]
+light_mask = 0
+offset_left = 56.0
+offset_top = 32.0
+offset_right = 227.0
+offset_bottom = 139.0
+scale = Vector2(0.75, 0.75)
+text = "Gabriel Dill Panzenhagen"
+label_settings = SubResource("LabelSettings_lr60n")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Back" type="Button" parent="CanvasLayer/Credits"]
+offset_left = 8.0
+offset_top = 136.0
+offset_right = 48.0
+offset_bottom = 152.0
+focus_mode = 0
+flat = true
+
+[node name="Settings" type="Node2D" parent="CanvasLayer"]
+visible = false
+
+[node name="Music" type="Node2D" parent="CanvasLayer/Settings"]
+position = Vector2(-48, -32)
+scale = Vector2(2, 2)
+
+[node name="NMusic" type="Label" parent="CanvasLayer/Settings/Music"]
+light_mask = 0
+offset_left = 56.0
+offset_top = 40.0
+offset_right = 77.0
+offset_bottom = 56.0
+scale = Vector2(0.75, 0.75)
+text = "10"
+label_settings = SubResource("LabelSettings_0owfn")
+horizontal_alignment = 1
+
+[node name="TMusicUp" type="Label" parent="CanvasLayer/Settings/Music"]
+light_mask = 0
+offset_left = 72.0
+offset_top = 40.0
+offset_right = 83.0
+offset_bottom = 56.0
+scale = Vector2(0.75, 0.75)
+text = ">"
+label_settings = SubResource("LabelSettings_0owfn")
+horizontal_alignment = 1
+
+[node name="TMusicDown" type="Label" parent="CanvasLayer/Settings/Music"]
+light_mask = 0
+offset_left = 48.0
+offset_top = 40.0
+offset_right = 59.0
+offset_bottom = 56.0
+scale = Vector2(0.75, 0.75)
+text = "<"
+label_settings = SubResource("LabelSettings_0owfn")
+horizontal_alignment = 1
+
+[node name="TMusic" type="Label" parent="CanvasLayer/Settings/Music"]
+light_mask = 0
+offset_left = 48.0
+offset_top = 29.0
+offset_right = 91.0
+offset_bottom = 45.0
+scale = Vector2(0.75, 0.75)
+text = ".Music"
+label_settings = SubResource("LabelSettings_0owfn")
+horizontal_alignment = 1
+
+[node name="Sounds" type="Node2D" parent="CanvasLayer/Settings"]
+position = Vector2(32, -32)
+scale = Vector2(2, 2)
+
+[node name="NSound" type="Label" parent="CanvasLayer/Settings/Sounds"]
+light_mask = 0
+offset_left = 56.0
+offset_top = 40.0
+offset_right = 77.0
+offset_bottom = 56.0
+scale = Vector2(0.75, 0.75)
+text = "10"
+label_settings = SubResource("LabelSettings_0owfn")
+horizontal_alignment = 1
+
+[node name="TSoundUp" type="Label" parent="CanvasLayer/Settings/Sounds"]
+light_mask = 0
+offset_left = 72.0
+offset_top = 40.0
+offset_right = 83.0
+offset_bottom = 56.0
+scale = Vector2(0.75, 0.75)
+text = ">"
+label_settings = SubResource("LabelSettings_0owfn")
+horizontal_alignment = 1
+
+[node name="TSoundDown" type="Label" parent="CanvasLayer/Settings/Sounds"]
+light_mask = 0
+offset_left = 48.0
+offset_top = 40.0
+offset_right = 59.0
+offset_bottom = 56.0
+scale = Vector2(0.75, 0.75)
+text = "<"
+label_settings = SubResource("LabelSettings_0owfn")
+horizontal_alignment = 1
+
+[node name="TSound" type="Label" parent="CanvasLayer/Settings/Sounds"]
+light_mask = 0
+offset_left = 48.0
+offset_top = 29.0
+offset_right = 91.0
+offset_bottom = 45.0
+scale = Vector2(0.75, 0.75)
+text = ".Sounds"
+label_settings = SubResource("LabelSettings_0owfn")
+horizontal_alignment = 1
+
+[node name="Language" type="Node2D" parent="CanvasLayer/Settings"]
+position = Vector2(-8, 24)
+scale = Vector2(2, 2)
+
+[node name="NLanguage" type="Label" parent="CanvasLayer/Settings/Language"]
+light_mask = 0
+offset_left = 34.0
+offset_top = 41.5
+offset_right = 153.0
+offset_bottom = 57.5
+scale = Vector2(0.5, 0.5)
+text = ".Language_Selected"
+label_settings = SubResource("LabelSettings_0owfn")
+horizontal_alignment = 1
+
+[node name="ChangeLanguageLeft" type="Label" parent="CanvasLayer/Settings/Language"]
+light_mask = 0
+offset_left = 84.0
+offset_top = 40.0
+offset_right = 95.0
+offset_bottom = 56.0
+scale = Vector2(0.75, 0.75)
+text = ">"
+label_settings = SubResource("LabelSettings_0owfn")
+horizontal_alignment = 1
+
+[node name="ChangeLanguageRight" type="Label" parent="CanvasLayer/Settings/Language"]
+light_mask = 0
+offset_left = 36.0
+offset_top = 40.0
+offset_right = 47.0
+offset_bottom = 56.0
+scale = Vector2(0.75, 0.75)
+text = "<"
+label_settings = SubResource("LabelSettings_0owfn")
+horizontal_alignment = 1
+
+[node name="TLanguage" type="Label" parent="CanvasLayer/Settings/Language"]
+light_mask = 0
+offset_left = 34.0
+offset_top = 29.0
+offset_right = 114.0
+offset_bottom = 45.0
+scale = Vector2(0.75, 0.75)
+text = ".Language"
+label_settings = SubResource("LabelSettings_0owfn")
+horizontal_alignment = 1
+
+[node name="TBack" type="Label" parent="CanvasLayer/Settings"]
+light_mask = 0
+offset_left = 12.0
+offset_top = 136.0
+offset_right = 50.0
+offset_bottom = 152.0
+scale = Vector2(0.75, 0.75)
+text = ".Back"
+label_settings = SubResource("LabelSettings_0owfn")
+
+[node name="Back" type="Button" parent="CanvasLayer/Settings"]
+offset_left = 8.0
+offset_top = 136.0
+offset_right = 48.0
+offset_bottom = 152.0
+focus_mode = 0
+flat = true
+
+[node name="SoundUp" type="Button" parent="CanvasLayer/Settings"]
+offset_left = 176.0
+offset_top = 48.0
+offset_right = 192.0
+offset_bottom = 72.0
+focus_mode = 0
+flat = true
+
+[node name="LangChange" type="Button" parent="CanvasLayer/Settings"]
+offset_left = 160.0
+offset_top = 104.0
+offset_right = 176.0
+offset_bottom = 128.0
+focus_mode = 0
+flat = true
+
+[node name="LangChange2" type="Button" parent="CanvasLayer/Settings"]
+offset_left = 64.0
+offset_top = 104.0
+offset_right = 80.0
+offset_bottom = 128.0
+focus_mode = 0
+flat = true
+
+[node name="SoundDown" type="Button" parent="CanvasLayer/Settings"]
+offset_left = 128.0
+offset_top = 48.0
+offset_right = 144.0
+offset_bottom = 72.0
+focus_mode = 0
+flat = true
+
+[node name="MusicUp" type="Button" parent="CanvasLayer/Settings"]
+offset_left = 96.0
+offset_top = 48.0
+offset_right = 112.0
+offset_bottom = 72.0
+focus_mode = 0
+flat = true
+
+[node name="MusicDown" type="Button" parent="CanvasLayer/Settings"]
+offset_left = 48.0
+offset_top = 48.0
+offset_right = 64.0
+offset_bottom = 72.0
+focus_mode = 0
+flat = true
+
+[node name="Camera" parent="CanvasLayer" instance=ExtResource("4_ogfmt")]
+visible = false
+position = Vector2(120, 80)
+can_quit = false
+
+[connection signal="pressed" from="CanvasLayer/Main/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="CanvasLayer/Credits/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="CanvasLayer/Settings/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="CanvasLayer/Settings/SoundUp" to="." method="_on_sound_pressed" binds= [1]]
+[connection signal="pressed" from="CanvasLayer/Settings/LangChange" to="." method="_on_lang_change_pressed" binds= [1]]
+[connection signal="pressed" from="CanvasLayer/Settings/LangChange2" to="." method="_on_lang_change_pressed" binds= [-1]]
+[connection signal="pressed" from="CanvasLayer/Settings/SoundDown" to="." method="_on_sound_pressed" binds= [-1]]
+[connection signal="pressed" from="CanvasLayer/Settings/MusicUp" to="." method="_on_music_pressed" binds= [1]]
+[connection signal="pressed" from="CanvasLayer/Settings/MusicDown" to="." method="_on_music_pressed" binds= [-1]]

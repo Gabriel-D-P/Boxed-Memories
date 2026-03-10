@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=4 uid="uid://bim6m0gvvsas7"]
+
+[ext_resource type="PackedScene" uid="uid://c32r4jeksnt3c" path="res://Nodes/walls.tscn" id="2_08dya"]
+[ext_resource type="Texture2D" uid="uid://bvjh86r4csvub" path="res://Sprites/Tiles.png" id="2_lc1p2"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_2ni62"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y5b0e"]
+texture = ExtResource("2_lc1p2")
+0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_2ni62")
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_mhmwp"]
+occlusion_layer_0/light_mask = 1
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_y5b0e")
+
+[node name="Bathroom" type="Node2D"]
+
+[node name="Walls" parent="." instance=ExtResource("2_08dya")]
+tile_map_data = PackedByteArray("AAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAP3/AAAAAAAAAAAHAP7/AAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAABAPz/AAAAAAAAAAACAPz/AAAAAAAAAAADAPz/AAAAAAAAAAAEAPz/AAAAAAAAAAAFAPz/AAAAAAAAAAAGAPz/AAAAAAAAAAAAAP3/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAPz/AAAAAAAAAAAHAPz/AAAAAAAAAAAHAAMAAAAAAAAAAAAAAAMAAAAAAAAAAAA=")
+
+[node name="Floor" type="TileMapLayer" parent="."]
+modulate = Color(0.6, 0.6, 0.6, 1)
+visibility_layer = 2
+z_index = -1
+z_as_relative = false
+tile_map_data = PackedByteArray("AAABAP3/AAACAAEAAAABAP7/AAACAAEAAAABAP//AAACAAEAAAABAAAAAAACAAEAAAABAAEAAAACAAEAAAABAAIAAAACAAEAAAACAP3/AAACAAEAAAACAP7/AAACAAEAAAACAP//AAACAAEAAAACAAAAAAACAAEAAAACAAEAAAACAAEAAAACAAIAAAACAAEAAAADAP3/AAACAAEAAAADAP7/AAACAAEAAAADAP//AAACAAEAAAADAAAAAAACAAEAAAADAAEAAAACAAEAAAADAAIAAAACAAEAAAAEAP3/AAACAAEAAAAEAP7/AAACAAEAAAAEAP//AAACAAEAAAAEAAAAAAACAAEAAAAEAAEAAAACAAEAAAAEAAIAAAACAAEAAAAFAP3/AAACAAEAAAAFAP7/AAACAAEAAAAFAP//AAACAAEAAAAFAAAAAAACAAEAAAAFAAEAAAACAAEAAAAFAAIAAAACAAEAAAAGAP3/AAACAAEAAAAGAP7/AAACAAEAAAAGAP//AAACAAEAAAAGAAAAAAACAAEAAAAGAAEAAAACAAEAAAAGAAIAAAACAAEAAAA=")
+tile_set = SubResource("TileSet_mhmwp")

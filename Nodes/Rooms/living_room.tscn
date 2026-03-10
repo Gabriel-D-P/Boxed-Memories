@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=4 uid="uid://vpqm7ijcsrf5"]
+
+[ext_resource type="PackedScene" uid="uid://c32r4jeksnt3c" path="res://Nodes/walls.tscn" id="2_bhll1"]
+
+[node name="LivingRoom" type="Node2D"]
+
+[node name="Walls" parent="." instance=ExtResource("2_bhll1")]
+tile_map_data = PackedByteArray("AAD+//7/AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAAAAAAAAAD+/wIAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAACAP7/AAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAABAP7/AAAAAAAAAAA=")

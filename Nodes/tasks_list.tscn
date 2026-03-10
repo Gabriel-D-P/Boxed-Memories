@@ -1,0 +1,181 @@
+[gd_scene load_steps=6 format=3 uid="uid://ct35trpgpb8sk"]
+
+[ext_resource type="Texture2D" uid="uid://bc08e6uk4dqp8" path="res://Sprites/TaskList.png" id="1_hr07l"]
+[ext_resource type="Script" uid="uid://btk104irditkt" path="res://Nodes/tasks_list.gd" id="1_l7oq0"]
+[ext_resource type="FontFile" uid="uid://dlcacgn52sxhr" path="res://MedodicaRegular.otf" id="2_u7pe8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ffkms"]
+font = ExtResource("2_u7pe8")
+font_size = 19
+font_color = Color(0, 0, 0, 1)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_l7oq0"]
+line_spacing = -2.0
+font = ExtResource("2_u7pe8")
+
+[node name="TasksList" type="Node2D"]
+script = ExtResource("1_l7oq0")
+
+[node name="CL" type="CanvasLayer" parent="."]
+layer = 2
+scale = Vector2(0.75, 0.75)
+transform = Transform2D(0.75, 0, 0, 0.75, 0, 0)
+
+[node name="TaskList" type="Sprite2D" parent="CL"]
+modulate = Color(0.7, 0.7, 0.7, 1)
+position = Vector2(286.667, 49.3333)
+texture = ExtResource("1_hr07l")
+
+[node name="Label" type="Label" parent="CL"]
+texture_filter = 2
+offset_left = 257.667
+offset_top = 12.3333
+offset_right = 371.667
+offset_bottom = 32.3333
+scale = Vector2(0.5, 0.5)
+text = ".DontForget"
+label_settings = SubResource("LabelSettings_ffkms")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Task1" type="Label" parent="CL"]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = -1
+anchor_left = 0.00138753
+anchor_top = -0.00208313
+anchor_right = 0.0138875
+anchor_bottom = -0.00208313
+offset_left = 257.667
+offset_top = 24.3333
+offset_right = 371.667
+offset_bottom = 40.3333
+scale = Vector2(0.5, 0.5)
+label_settings = SubResource("LabelSettings_l7oq0")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Number" type="Label" parent="CL/Task1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00138753
+anchor_top = 0.83125
+anchor_right = 0.0138875
+anchor_bottom = 0.83125
+offset_left = -0.162341
+offset_top = -0.30001
+offset_right = 115.375
+offset_bottom = 15.7
+label_settings = SubResource("LabelSettings_l7oq0")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Task2" type="Label" parent="CL"]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = -1
+anchor_left = 0.00138753
+anchor_top = -0.00208313
+anchor_right = 0.0138875
+anchor_bottom = -0.00208313
+offset_left = 257.667
+offset_top = 38.3333
+offset_right = 371.667
+offset_bottom = 54.3333
+scale = Vector2(0.5, 0.5)
+label_settings = SubResource("LabelSettings_l7oq0")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Number" type="Label" parent="CL/Task2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00138753
+anchor_top = 0.83125
+anchor_right = 0.0138875
+anchor_bottom = 0.83125
+offset_left = -0.162341
+offset_top = -0.30001
+offset_right = 115.375
+offset_bottom = 15.7
+label_settings = SubResource("LabelSettings_l7oq0")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Task3" type="Label" parent="CL"]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = -1
+anchor_left = 0.00138753
+anchor_top = -0.00208313
+anchor_right = 0.0138875
+anchor_bottom = -0.00208313
+offset_left = 257.667
+offset_top = 52.3333
+offset_right = 371.667
+offset_bottom = 68.3333
+scale = Vector2(0.5, 0.5)
+label_settings = SubResource("LabelSettings_l7oq0")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Number" type="Label" parent="CL/Task3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00138753
+anchor_top = 0.83125
+anchor_right = 0.0138875
+anchor_bottom = 0.83125
+offset_left = -0.162341
+offset_top = -0.30001
+offset_right = 115.375
+offset_bottom = 15.7
+label_settings = SubResource("LabelSettings_l7oq0")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Task4" type="Label" parent="CL"]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = -1
+anchor_left = 0.00138753
+anchor_top = -0.00208313
+anchor_right = 0.0138875
+anchor_bottom = -0.00208313
+offset_left = 257.667
+offset_top = 66.3333
+offset_right = 371.667
+offset_bottom = 82.3333
+scale = Vector2(0.5, 0.5)
+label_settings = SubResource("LabelSettings_l7oq0")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Number" type="Label" parent="CL/Task4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00138753
+anchor_top = 0.83125
+anchor_right = 0.0138875
+anchor_bottom = 0.83125
+offset_left = -0.162341
+offset_top = -0.30001
+offset_right = 115.375
+offset_bottom = 15.7
+label_settings = SubResource("LabelSettings_l7oq0")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Task5" type="Label" parent="CL"]
+modulate = Color(0, 0, 0, 1)
+anchors_preset = -1
+anchor_left = 0.00138753
+anchor_top = -0.00208313
+anchor_right = 0.0138875
+anchor_bottom = -0.00208313
+offset_left = 257.667
+offset_top = 80.3333
+offset_right = 371.667
+offset_bottom = 96.3333
+scale = Vector2(0.5, 0.5)
+label_settings = SubResource("LabelSettings_l7oq0")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
