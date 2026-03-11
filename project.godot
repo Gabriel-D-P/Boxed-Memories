@@ -27,6 +27,9 @@ window/size/viewport_width=240
 window/size/viewport_height=160
 window/size/mode=3
 window/stretch/mode="canvas_items"
+window/image="uid://n85dftqm7aub"
+window/icon="uid://n85dftqm7aub"
+window/description="Small game made for the Bad Ideas game jam."
 
 [input]
 
