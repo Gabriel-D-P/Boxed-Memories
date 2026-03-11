@@ -20,6 +20,7 @@ func _physics_process(delta: float) -> void:
 		await get_tree().create_timer(3).timeout
 		Global.final_transition = true
 		Global.transition = true
+		Global.day = 7
 		can_end = false
 
 
@@ -29,6 +30,6 @@ func _on_timer_timeout() -> void:
 
 func _on_timer_2_timeout() -> void:
 	camera.speak(number)
-	number += 1
+	number += 1 if number < 5 else 0
 	if number < 5:
 		timer2.start(10)

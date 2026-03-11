@@ -10,7 +10,7 @@ func _ready() -> void:
 	Global.transition = false
 	await get_tree().create_timer(0.5).timeout
 	sounds.play_sound(sounds.doom)
-	if Global.day == 6:
+	if Global.day == 7:
 		Global.day = 1
 		text.text = ""
 		final_text.visible_characters = 0

@@ -409,6 +409,148 @@ visible = false
 position = Vector2(120, 80)
 can_quit = false
 
+[node name="Secret" type="CanvasLayer" parent="."]
+layer = 2
+visible = false
+
+[node name="SelectDay" type="Label" parent="Secret"]
+light_mask = 0
+offset_left = 56.0
+offset_top = 40.0
+offset_right = 227.0
+offset_bottom = 56.0
+scale = Vector2(0.75, 0.75)
+text = "Select day:"
+label_settings = SubResource("LabelSettings_0owfn")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="SelectDay1" type="Label" parent="Secret"]
+light_mask = 0
+offset_left = 32.0
+offset_top = 56.0
+offset_right = 96.0
+offset_bottom = 72.0
+scale = Vector2(0.75, 0.75)
+text = "Day 1"
+label_settings = SubResource("LabelSettings_0owfn")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Day1" type="Button" parent="Secret"]
+offset_left = 40.0
+offset_top = 56.0
+offset_right = 72.0
+offset_bottom = 72.0
+focus_mode = 0
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SelectDay2" type="Label" parent="Secret"]
+light_mask = 0
+offset_left = 96.0
+offset_top = 56.0
+offset_right = 160.0
+offset_bottom = 72.0
+scale = Vector2(0.75, 0.75)
+text = "Day 2"
+label_settings = SubResource("LabelSettings_0owfn")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Day2" type="Button" parent="Secret"]
+offset_left = 104.0
+offset_top = 56.0
+offset_right = 136.0
+offset_bottom = 72.0
+focus_mode = 0
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SelectDay3" type="Label" parent="Secret"]
+light_mask = 0
+offset_left = 160.0
+offset_top = 56.0
+offset_right = 224.0
+offset_bottom = 72.0
+scale = Vector2(0.75, 0.75)
+text = "Day 3"
+label_settings = SubResource("LabelSettings_0owfn")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Day3" type="Button" parent="Secret"]
+offset_left = 168.0
+offset_top = 56.0
+offset_right = 200.0
+offset_bottom = 72.0
+focus_mode = 0
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SelectDay4" type="Label" parent="Secret"]
+light_mask = 0
+offset_left = 32.0
+offset_top = 88.0
+offset_right = 96.0
+offset_bottom = 104.0
+scale = Vector2(0.75, 0.75)
+text = "Day 4"
+label_settings = SubResource("LabelSettings_0owfn")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Day4" type="Button" parent="Secret"]
+offset_left = 40.0
+offset_top = 88.0
+offset_right = 72.0
+offset_bottom = 104.0
+focus_mode = 0
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SelectDay5" type="Label" parent="Secret"]
+light_mask = 0
+offset_left = 96.0
+offset_top = 88.0
+offset_right = 160.0
+offset_bottom = 104.0
+scale = Vector2(0.75, 0.75)
+text = "Day 5"
+label_settings = SubResource("LabelSettings_0owfn")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Day5" type="Button" parent="Secret"]
+offset_left = 104.0
+offset_top = 88.0
+offset_right = 136.0
+offset_bottom = 104.0
+focus_mode = 0
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SelectDay6" type="Label" parent="Secret"]
+light_mask = 0
+offset_left = 160.0
+offset_top = 88.0
+offset_right = 224.0
+offset_bottom = 104.0
+scale = Vector2(0.75, 0.75)
+text = "Day ?"
+label_settings = SubResource("LabelSettings_0owfn")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Day6" type="Button" parent="Secret"]
+offset_left = 168.0
+offset_top = 88.0
+offset_right = 200.0
+offset_bottom = 104.0
+focus_mode = 0
+flat = true
+metadata/_edit_use_anchors_ = true
+
 [connection signal="pressed" from="CanvasLayer/Main/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main/Credits" to="." method="_on_credits_pressed"]
@@ -421,3 +563,9 @@ can_quit = false
 [connection signal="pressed" from="CanvasLayer/Settings/SoundDown" to="." method="_on_sound_pressed" binds= [-1]]
 [connection signal="pressed" from="CanvasLayer/Settings/MusicUp" to="." method="_on_music_pressed" binds= [1]]
 [connection signal="pressed" from="CanvasLayer/Settings/MusicDown" to="." method="_on_music_pressed" binds= [-1]]
+[connection signal="pressed" from="Secret/Day1" to="." method="_on_day_pressed" binds= [1]]
+[connection signal="pressed" from="Secret/Day2" to="." method="_on_day_pressed" binds= [2]]
+[connection signal="pressed" from="Secret/Day3" to="." method="_on_day_pressed" binds= [3]]
+[connection signal="pressed" from="Secret/Day4" to="." method="_on_day_pressed" binds= [4]]
+[connection signal="pressed" from="Secret/Day5" to="." method="_on_day_pressed" binds= [5]]
+[connection signal="pressed" from="Secret/Day6" to="." method="_on_day_pressed" binds= [6]]
