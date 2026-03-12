@@ -2,6 +2,11 @@ extends Camera2D
 @onready var blackscreen: Sprite2D = $CanvasLayer/BlackScreen
 @onready var timer: Timer = $Timer
 
+@onready var pause: Button = $CanvasLayer/Pause
+@onready var ui: Node2D = $CanvasLayer/UI
+@onready var joy_stick: Node2D = $CanvasLayer/UI/JoyStick
+@onready var interact: TouchScreenButton = $CanvasLayer/UI/Interact
+
 @onready var settings: Node2D = $CanvasLayer/Settings
 @onready var n_music: Label = $CanvasLayer/Settings/Music/NMusic
 @onready var n_sound: Label = $CanvasLayer/Settings/Sounds/NSound
@@ -29,16 +34,17 @@ func speak(number: int) -> void:
 	text_bubble.visible = false
 
 func _process(delta: float) -> void:
+	if Global.mobile:
+		ui.visible = not (Global.transition or Global.final_transition) and can_quit and not get_tree().paused
+	else:
+		ui.visible = false
+	
+	pause.visible = not (Global.transition or Global.final_transition) and can_quit
+	
 	musics.lower_music = Global.transition
 	
-	if Input.is_action_just_pressed("ui_cancel") and not (Global.transition or Global.final_transition) and can_quit:
-		get_tree().paused = !get_tree().paused
-		blackscreen_stop = get_tree().paused
-		blackscreen.modulate.a = 1.0 if get_tree().paused else 0.0
-		settings.visible = get_tree().paused
-		for button in settings.get_children():
-			if button is Button:
-				button.disabled = !get_tree().paused
+	if Input.is_action_just_pressed("Pause") and not (Global.transition or Global.final_transition) and can_quit:
+		_on_pause_pressed()
 	
 	n_music.text = str(Global.musics_volume)
 	n_sound.text = str(Global.sounds_volume)
@@ -82,3 +88,13 @@ func _on_lang_change_pressed(value: int) -> void:
 func _on_back_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Nodes/menu.tscn")
+
+
+func _on_pause_pressed() -> void:
+	get_tree().paused = !get_tree().paused
+	blackscreen_stop = get_tree().paused
+	blackscreen.modulate.a = 1.0 if get_tree().paused else 0.0
+	settings.visible = get_tree().paused
+	for button in settings.get_children():
+		if button is Button:
+			button.disabled = !get_tree().paused

@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqf2ssavktli1"]
+
+[ext_resource type="Script" uid="uid://bc81q4m00sm52" path="res://Nodes/select_mode.gd" id="1_33pxj"]
+[ext_resource type="Texture2D" uid="uid://c07xcbbmmxxut" path="res://Sprites/BlackScreen.png" id="1_f4vfc"]
+[ext_resource type="Texture2D" uid="uid://cou7xt7ploh60" path="res://Sprites/PhoneOrPC.png" id="2_u77xo"]
+
+[node name="SelectMode" type="Node2D"]
+script = ExtResource("1_33pxj")
+
+[node name="BlackScreen" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(2, 1)
+texture = ExtResource("1_f4vfc")
+
+[node name="BlackScreen2" type="Sprite2D" parent="."]
+modulate = Color(0.158472, 0.158472, 0.158472, 1)
+position = Vector2(-48, 5.96046e-07)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("1_f4vfc")
+
+[node name="BlackScreen3" type="Sprite2D" parent="."]
+modulate = Color(0.158472, 0.158472, 0.158472, 1)
+position = Vector2(48, -1.3113e-06)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("1_f4vfc")
+
+[node name="PhoneOrPc" type="Sprite2D" parent="."]
+position = Vector2(48, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("2_u77xo")
+region_enabled = true
+region_rect = Rect2(16, 0, 32, 32)
+
+[node name="PhoneOrPc2" type="Sprite2D" parent="."]
+position = Vector2(-48, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("2_u77xo")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 32)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Mobile" type="Button" parent="."]
+offset_left = -84.0
+offset_top = -36.0
+offset_right = -12.0
+offset_bottom = 36.0
+focus_mode = 0
+flat = true
+
+[node name="PC" type="Button" parent="."]
+offset_left = 12.0
+offset_top = -36.0
+offset_right = 84.0
+offset_bottom = 36.0
+focus_mode = 0
+flat = true
+
+[connection signal="pressed" from="Mobile" to="." method="_pressed" binds= [true]]
+[connection signal="pressed" from="PC" to="." method="_pressed" binds= [false]]

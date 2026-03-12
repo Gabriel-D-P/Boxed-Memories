@@ -50,7 +50,7 @@ func _physics_process(_delta: float) -> void:
 		for i in range(min(current_tasks.size(), labels.size())):
 			if current_tasks[i] in [".Collect_Trash", ".Open_Boxes", ".Find_Photos", ".Water_Plants"]:
 				labels[i].text = str(current_tasks[i])
-				labels[i].get_child(0).text = str(Global.task_list.get(current_tasks[i], 0), "/", tasks[current_tasks[i]])
+				labels[i].get_child(0).text = str(Global.task_list.get(current_tasks[i], 0), "/", tasks.get(current_tasks[i], 0))
 			else:
 				labels[i].text = current_tasks[i]
 				if labels[i].get_child_count() > 0:
@@ -75,15 +75,15 @@ func _physics_process(_delta: float) -> void:
 				".Open_Boxes":
 					match Global.day:
 						1:
-							task.modulate = Color(0.5,0.5,0.5) if Global.task_list.get(".Open_Boxes", 0) >= 5 else Color(0,0,0)
+							task.modulate = Color(0.5,0.5,0.5) if Global.task_list.get(".Open_Boxes", 0) >= 2 else Color(0,0,0)
 						2:
-							task.modulate = Color(0.5,0.5,0.5) if Global.task_list.get(".Open_Boxes", 0) >= 10 else Color(0,0,0)
+							task.modulate = Color(0.5,0.5,0.5) if Global.task_list.get(".Open_Boxes", 0) >= 5 else Color(0,0,0)
 						3:
-							task.modulate = Color(0.5,0.5,0.5) if Global.task_list.get(".Open_Boxes", 0) >= 15 else Color(0,0,0)
+							task.modulate = Color(0.5,0.5,0.5) if Global.task_list.get(".Open_Boxes", 0) >= 8 else Color(0,0,0)
 						4:
-							task.modulate = Color(0.5,0.5,0.5) if Global.task_list.get(".Open_Boxes", 0) >= 20 else Color(0,0,0)
+							task.modulate = Color(0.5,0.5,0.5) if Global.task_list.get(".Open_Boxes", 0) >= 12 else Color(0,0,0)
 						5:
-							task.modulate = Color(0.5,0.5,0.5) if Global.task_list.get(".Open_Boxes", 0) >= 25 else Color(0,0,0)
+							task.modulate = Color(0.5,0.5,0.5) if Global.task_list.get(".Open_Boxes", 0) >= 16 else Color(0,0,0)
 
 				".Eat_Snack":
 					task.modulate = Color(0.5,0.5,0.5) if Global.task_list.get(".Eat_Snack", 0) else Color(0,0,0)

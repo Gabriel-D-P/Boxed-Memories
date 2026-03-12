@@ -44,8 +44,10 @@ script = ExtResource("1_evji3")
 position = Vector2(-464, -48)
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="Camera"]
+layer = 2
 
 [node name="Label2" type="Label" parent="Camera/CanvasLayer2"]
+visible = false
 modulate = Color(1, 1, 1, 0.25)
 z_index = 15
 offset_right = 172.0

@@ -82,20 +82,30 @@ func controls() -> void:
 	#Control Y axis
 	if Input.is_action_pressed("Up"):
 		direction.y = -1
-		direction.x = 0 if not (Input.is_action_pressed("Left") or Input.is_action_pressed("Right")) else direction.x
+		direction.x = 0 if not (Input.is_action_pressed("Left") or Input.is_action_pressed("Right") or Input.is_action_pressed("RightDown") or Input.is_action_pressed("RightUp") or Input.is_action_pressed("LeftDown") or Input.is_action_pressed("LeftUp")) else direction.x
 	elif Input.is_action_pressed("Down"):
 		direction.y = 1
-		direction.x = 0 if not (Input.is_action_pressed("Left") or Input.is_action_pressed("Right")) else direction.x
+		direction.x = 0 if not (Input.is_action_pressed("Left") or Input.is_action_pressed("Right") or Input.is_action_pressed("RightDown") or Input.is_action_pressed("RightUp") or Input.is_action_pressed("LeftDown") or Input.is_action_pressed("LeftUp")) else direction.x
 	
 	#Control X axis
 	if Input.is_action_pressed("Left"):
 		direction.x = -1
-		direction.y = 0 if not (Input.is_action_pressed("Up") or Input.is_action_pressed("Down")) else direction.y
+		direction.y = 0 if not (Input.is_action_pressed("Up") or Input.is_action_pressed("Down") or Input.is_action_pressed("RightDown") or Input.is_action_pressed("RightUp") or Input.is_action_pressed("LeftDown") or Input.is_action_pressed("LeftUp")) else direction.y
 	elif Input.is_action_pressed("Right"):
 		direction.x = 1
-		direction.y = 0 if not (Input.is_action_pressed("Up") or Input.is_action_pressed("Down")) else direction.y
+		direction.y = 0 if not (Input.is_action_pressed("Up") or Input.is_action_pressed("Down") or Input.is_action_pressed("RightDown") or Input.is_action_pressed("RightUp") or Input.is_action_pressed("LeftDown") or Input.is_action_pressed("LeftUp")) else direction.y
 	
-	moving_y = Input.is_action_pressed("Down") or Input.is_action_pressed("Up")
-	moving_x = Input.is_action_pressed("Left") or Input.is_action_pressed("Right")
+	#Control both axis
+	if Input.is_action_pressed("LeftUp"):
+		direction = Vector2(-1, -1)
+	elif Input.is_action_pressed("RightUp"):
+		direction = Vector2(1, -1)
+	elif Input.is_action_pressed("LeftDown"):
+		direction = Vector2(-1, 1)
+	elif Input.is_action_pressed("RightDown"):
+		direction = Vector2(1, 1)
+	
+	moving_y = (Input.is_action_pressed("Down") or Input.is_action_pressed("Up") or Input.is_action_pressed("RightDown") or Input.is_action_pressed("RightUp") or Input.is_action_pressed("LeftDown") or Input.is_action_pressed("LeftUp"))
+	moving_x = (Input.is_action_pressed("Left") or Input.is_action_pressed("Right") or Input.is_action_pressed("RightDown") or Input.is_action_pressed("RightUp") or Input.is_action_pressed("LeftDown") or Input.is_action_pressed("LeftUp"))
 	
 	direction = direction.normalized()

@@ -1,0 +1,84 @@
+[gd_scene load_steps=4 format=3 uid="uid://qdte8lvaiv2w"]
+
+[ext_resource type="Script" uid="uid://c72dwpm14rfeq" path="res://Nodes/joy_stick.gd" id="1_pv0og"]
+[ext_resource type="Texture2D" uid="uid://dgg1g2gekgj7o" path="res://Sprites/Joystick.png" id="2_3pmbx"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_eg647"]
+points = PackedVector2Array(14.5, 6, 13.5, 8, 11.5, 11.5, 8, 13.5, 6, 14.5, 0, 0)
+
+[node name="JoyStick" type="Node2D"]
+script = ExtResource("1_pv0og")
+
+[node name="OneWay" type="Node2D" parent="."]
+scale = Vector2(2.3, 2.3)
+
+[node name="Down" type="TouchScreenButton" parent="OneWay"]
+rotation = 0.785398
+scale = Vector2(1, 1)
+shape = SubResource("ConvexPolygonShape2D_eg647")
+passby_press = true
+action = "Down"
+visibility_mode = 1
+
+[node name="Left" type="TouchScreenButton" parent="OneWay"]
+rotation = 2.35619
+scale = Vector2(1, 1)
+shape = SubResource("ConvexPolygonShape2D_eg647")
+passby_press = true
+action = "Left"
+visibility_mode = 1
+
+[node name="Up" type="TouchScreenButton" parent="OneWay"]
+rotation = -2.35619
+shape = SubResource("ConvexPolygonShape2D_eg647")
+passby_press = true
+action = "Up"
+visibility_mode = 1
+
+[node name="Right" type="TouchScreenButton" parent="OneWay"]
+rotation = -0.785398
+shape = SubResource("ConvexPolygonShape2D_eg647")
+passby_press = true
+action = "Right"
+visibility_mode = 1
+
+[node name="CrossWay" type="Node2D" parent="."]
+scale = Vector2(2.3, 2.3)
+
+[node name="RightUp" type="TouchScreenButton" parent="CrossWay"]
+rotation = -1.5708
+shape = SubResource("ConvexPolygonShape2D_eg647")
+passby_press = true
+action = "RightUp"
+visibility_mode = 1
+
+[node name="LeftUp" type="TouchScreenButton" parent="CrossWay"]
+rotation = -3.14159
+shape = SubResource("ConvexPolygonShape2D_eg647")
+passby_press = true
+action = "LeftUp"
+visibility_mode = 1
+
+[node name="LeftDown" type="TouchScreenButton" parent="CrossWay"]
+rotation = 1.5708
+shape = SubResource("ConvexPolygonShape2D_eg647")
+passby_press = true
+action = "LeftDown"
+visibility_mode = 1
+
+[node name="RightDown" type="TouchScreenButton" parent="CrossWay"]
+shape = SubResource("ConvexPolygonShape2D_eg647")
+passby_press = true
+action = "RightDown"
+visibility_mode = 1
+
+[node name="Joystick" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_3pmbx")
+region_enabled = true
+region_rect = Rect2(0, 0, 48, 48)
+
+[node name="JoystickBall" type="Sprite2D" parent="."]
+texture = ExtResource("2_3pmbx")
+region_enabled = true
+region_rect = Rect2(52, 52, 8, 8)

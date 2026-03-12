@@ -38,34 +38,34 @@ var full_task_list := {
 
 var tasks_1 := {
 	".Wash_Dishes": true,
-	".Open_Boxes": 5,
+	".Open_Boxes": 2,
 	".Eat_Snack": true,
 	".Collect_Trash": 20
 }
 
 var tasks_2 := {
-	".Open_Boxes": 10,
+	".Open_Boxes": 5,
 	".Pee": true,
 	".Watch_TV": true,
 	".Check_Fridge": true
 }
 
 var tasks_3 := {
-	".Open_Boxes": 15,
+	".Open_Boxes": 8,
 	".Brush_Teeth": true,
 	".Eat_Snack": true,
 	".Water_Plants": 9
 }
 
 var tasks_4 := {
-	".Open_Boxes": 20,
+	".Open_Boxes": 12,
 	".Take_a_Shower": true,
 	".Find_Key": true,
 	".Find_Photos": 4
 }
 
 var tasks_5 := {
-	".Open_Boxes": 25,
+	".Open_Boxes": 16,
 	".Wash_Dishes": true,
 	".Eat_Snack": true,
 	".Collect_Trash": 20
@@ -74,6 +74,8 @@ var tasks_5 := {
 var tasks_6 := {
 	"Sair": false,
 }
+
+var mobile = false
 
 var day := 1
 var transition := false #Changes the day

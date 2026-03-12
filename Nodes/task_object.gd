@@ -61,6 +61,7 @@ func _ready() -> void:
 				var collision_shape = collision.shape
 				collision.shape = collision_shape.duplicate()
 				collision.shape.size = Vector2(30, 14)
+			max_completion = 4
 		TASK.TRASH:
 			ID = "Trash"
 			required_item = "TrashBag"
@@ -82,6 +83,7 @@ func _ready() -> void:
 				var collision_shape = collision.shape
 				collision.shape = collision_shape.duplicate()
 				collision.shape.size = Vector2(30, 14)
+				max_completion = 4
 		TASK.FRIDGE:
 			ID = "Fridge"
 			if collision:
@@ -89,12 +91,14 @@ func _ready() -> void:
 				collision.shape = collision_shape.duplicate()
 				collision.shape.size = Vector2(26, 11)
 				collision.position = Vector2(0, -9.5)
+				max_completion = 2
 		TASK.TOILET:
 			ID = "Toilet"
 			if collision:
 				var collision_shape = collision.shape
 				collision.shape = collision_shape.duplicate()
 				collision.shape.size = Vector2(12, 12)
+				max_completion = 3
 		TASK.SHOWER:
 			ID = "Shower"
 			if collision:
@@ -105,12 +109,14 @@ func _ready() -> void:
 				interact_area.position.y = -10
 			sprites2 = $SecondSprites
 			has_second_sprite = true
+			max_completion = 5
 		TASK.SINK:
 			ID = "Sink"
 			if collision:
 				var collision_shape = collision.shape
 				collision.shape = collision_shape.duplicate()
 				collision.shape.size = Vector2(14, 14)
+				max_completion = 3
 		TASK.BED:
 			ID = "Bed"
 			if collision:
@@ -118,6 +124,7 @@ func _ready() -> void:
 				collision.shape = collision_shape.duplicate()
 				collision.shape.size = Vector2(26, 42)
 				interact_collision.shape.radius = 18
+			max_completion = 0.5
 		TASK.TV:
 			ID = "TV"
 			if collision:
@@ -125,6 +132,7 @@ func _ready() -> void:
 				collision.shape = collision_shape.duplicate()
 				collision.shape.size = Vector2(28, 14)
 				collision.position = Vector2(0, -8)
+			max_completion = 4
 		TASK.PLANT:
 			ID = str("Plant", variation_number)
 			if collision:
@@ -139,6 +147,7 @@ func _ready() -> void:
 			close_when_finished = true
 			interact_collision.shape.radius = 12
 			has_second_sprite = true
+			max_completion = 1
 		TASK.KEY:
 			ID = "Key"
 			collision.queue_free()

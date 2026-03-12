@@ -4,6 +4,7 @@ extends Node2D
 @onready var timer: Timer = $Timer
 
 func _ready() -> void:
+	$Camera/CanvasLayer2/Label2.visible = !Global.mobile
 	camera.musics.loop_music(camera.musics.daily_life)
 	timer.start(10)
 	randomize()
